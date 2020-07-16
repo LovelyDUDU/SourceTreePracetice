@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        textarea {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--main-->
+    <p>글자수 세는 프로그램입니다.</p>
+
+    <form action="{% url 'result' %}">
+        <!--우선 action 부분은 비워둡니다.-->
+        <textarea name="totaltext"></textarea>
+        <input type="submit" value="계산하기!">
+    </form>
+
+    {% for blog in blogs.all %}
+    <h1> {{blog.title}}</h1>
+    <p> {{blog.pub_date}}</p>
+    <p>{{blog.summary}}<a href="{% url 'detail'  blog.id%}">...더보기</a></p>
+    {% endfor%}
+    <br><br>
+</body>
+
+</html>
